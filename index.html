@@ -3,918 +3,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gobierno Sheinbaum - Análisis Futurista 2026</title>
+    <title>Observatorio de Integridad y Rendición de Cuentas</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-primary: #f4f6f8;
+            --bg-secondary: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #546e7a;
+            --accent: #455a64;
+            --accent-hover: #37474f;
+            --border: #cfd8dc;
+            --highlight: #d32f2f; /* Neutral red for serious alerts */
         }
 
-        :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #bc13fe;
-            --neon-pink: #ff006e;
-            --dark-bg: #0a0a0f;
-            --glass: rgba(255, 255, 255, 0.05);
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Rajdhani', sans-serif;
-            background: var(--dark-bg);
-            color: #fff;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(188, 19, 254, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 50%);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
         }
 
-        /* Animated Background Grid */
-        .grid-bg {
-            position: fixed;
+        /* Counter Section */
+        .counter-banner {
+            background-color: var(--text-primary);
+            color: #ecf0f1;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            animation: gridMove 20s linear infinite;
+            z-index: 100;
         }
 
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        .counter-value {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #ff8a80;
+            font-size: 1.3rem;
+            margin-left: 8px;
         }
 
         /* Header */
-        .header {
-            background: linear-gradient(135deg, rgba(188, 19, 254, 0.2), rgba(0, 243, 255, 0.2));
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--neon-purple);
-            padding: 20px;
+        header {
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-bottom: 2px solid var(--border);
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
-            animation: scan 3s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .integrantes {
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9rem;
-            color: var(--neon-blue);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-        }
-
-        .main-title {
-            font-family: 'Orbitron', sans-serif;
+        header h1 {
             font-size: 2rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 3s ease-in-out infinite alternate;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(188, 19, 254, 0.5)); }
-            to { filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.8)); }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
+        header p {
+            color: var(--text-secondary);
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            font-size: 1.05rem;
         }
 
-        /* Question Card */
-        .question-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .question-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transform: rotate(45deg);
-            animation: shimmer 6s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        .question-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--neon-blue);
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .pulse-btn {
-            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.5);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .pulse-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(188, 19, 254, 0.8);
-        }
-
-        /* Grid System */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        /* Cards */
-        .card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 25px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
-            border-color: var(--neon-blue);
-        }
-
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .card h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .info-btn {
-            background: rgba(0, 243, 255, 0.2);
-            border: 1px solid var(--neon-blue);
-            color: var(--neon-blue);
-            padding: 8px 20px;
-            border-radius: 20px;
-            margin-top: 15px;
-            cursor: pointer;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-
-        .info-btn:hover {
-            background: var(--neon-blue);
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-        }
-
-        /* Section Headers */
-        .section-header {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            text-align: center;
-            margin: 50px 0 30px;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .section-header::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
-            margin: 10px auto;
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--neon-blue);
-        }
-
-        /* Modal/Popup */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border: 2px solid var(--neon-purple);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 0 50px rgba(188, 19, 254, 0.5);
-            animation: modalAppear 0.3s ease-out;
-        }
-
-        @keyframes modalAppear {
-            from { opacity: 0; transform: scale(0.8) translateY(-50px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: var(--neon-pink);
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
+        /* Mind Map Container */
+        .mindmap-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .close-modal:hover {
-            background: rgba(255, 0, 110, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .modal h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .modal ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .modal li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-left: 30px;
+        /* Central Node */
+        .central-node {
+            background-color: var(--text-primary);
+            color: white;
+            padding: 25px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+            z-index: 10;
+            margin-bottom: 50px;
             position: relative;
         }
 
-        .modal li::before {
-            content: '▹';
+        .central-node::after {
+            content: '';
             position: absolute;
-            left: 0;
-            color: var(--neon-purple);
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 50px;
+            background-color: var(--border);
         }
 
-        /* Analysis Section */
-        .analysis-box {
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(188, 19, 254, 0.1));
-            border: 2px solid rgba(0, 243, 255, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
+        /* Grid for branches */
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            width: 100%;
             position: relative;
         }
 
-        .analysis-box h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-pink);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+        /* Connecting lines (visual only for desktop) */
+        @media (min-width: 768px) {
+            .branches-grid::before {
+                content: '';
+                position: absolute;
+                top: -30px;
+                left: 10%;
+                right: 10%;
+                height: 2px;
+                background-color: var(--border);
+                z-index: 1;
+            }
+            .branch-node {
+                position: relative;
+            }
+            .branch-node::before {
+                content: '';
+                position: absolute;
+                top: -30px;
+                left: 50%;
+                width: 2px;
+                height: 30px;
+                background-color: var(--border);
+                z-index: 1;
+            }
         }
 
-        .analysis-box p {
+        /* Interactive Buttons */
+        .branch-node {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        .branch-node:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .branch-node.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .branch-node h3 {
             font-size: 1.1rem;
-            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .branch-node p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .branch-node.active p {
+            color: #cfd8dc;
+        }
+
+        /* Detail Panel */
+        .detail-panel {
+            max-width: 900px;
+            margin: 40px auto 0;
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .detail-panel.visible {
+            display: block;
+        }
+
+        .detail-panel h2 {
+            color: var(--text-primary);
             margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .detail-panel p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
             text-align: justify;
         }
 
-        .highlight {
-            color: var(--neon-blue);
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        .source-citation {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: #78909c;
+            font-style: italic;
         }
 
-        .warning {
-            color: var(--neon-pink);
-            font-weight: 700;
+        .source-citation a {
+            color: var(--accent);
+            text-decoration: none;
         }
 
-        /* Interactive Elements */
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .toggle-btn {
-            padding: 15px 30px;
-            border: 2px solid var(--neon-blue);
-            background: transparent;
-            color: var(--neon-blue);
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .toggle-btn.active {
-            background: var(--neon-blue);
-            color: var(--dark-bg);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
-        }
-
-        .toggle-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
-        }
-
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .content-section.active {
-            display: block;
+        .source-citation a:hover {
+            text-decoration: underline;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Stats */
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .stat-box {
+        footer {
             text-align: center;
+            margin-top: 60px;
             padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            min-width: 150px;
-        }
-
-        .stat-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: var(--neon-purple);
-            display: block;
-            text-shadow: 0 0 20px rgba(188, 19, 254, 0.8);
-        }
-
-        .stat-label {
+            color: var(--text-secondary);
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-            margin-top: 5px;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px;
-            margin-top: 50px;
-            border-top: 1px solid rgba(0, 243, 255, 0.3);
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-title { font-size: 1.5rem; }
-            .question-text { font-size: 1.3rem; }
-            .section-header { font-size: 1.5rem; }
-            .card { padding: 20px; }
-        }
-
-        /* Floating Particles */
-        .particle {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: var(--neon-blue);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.5;
-            animation: float 10s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* Holographic Effect */
-        .holo-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .holo-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.1) 50%,
-                transparent 70%
-            );
-            transform: rotate(45deg);
-            transition: all 0.5s;
-            opacity: 0;
-        }
-
-        .holo-card:hover::after {
-            animation: holoShine 0.5s ease-in-out;
-        }
-
-        @keyframes holoShine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
-    
-    <!-- Floating Particles -->
-    <div id="particles"></div>
 
-    <header class="header">
-        <div class="integrantes">Integrantes: Noemí, Alejandro, Omar, Tadeo, Frida y Sophie</div>
-        <h1 class="main-title">ANÁLISIS GOBIERNO 2026</h1>
+    <!-- Contador solicitado en la parte superior -->
+    <div class="counter-banner">
+        El gobierno dice que no hay personas afectadas. Contador en vivo: <span id="live-counter" class="counter-value">320</span>
+    </div>
+
+    <header>
+        <h1>Observatorio de Integridad Institucional</h1>
+        <p>Análisis basado en datos verificables sobre la rendición de cuentas, la percepción de corrupción y la eficacia de los mecanismos de fiscalización en la administración pública federal.</p>
     </header>
 
-    <div class="container">
-        <!-- Main Question -->
-        <div class="question-card">
-            <h2 class="question-text">¿Claudia Sheinbaum y el gobierno ayuda, apoya y escucha a su comunidad?</h2>
-            <button class="pulse-btn" onclick="toggleAnalysis()">Ver Análisis Completo</button>
+    <main class="mindmap-container">
+        <div class="central-node">
+            ¿Escucha el Gobierno a la Ciudadanía?
+            <br><span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Evaluación de Mecanismos Institucionales</span>
         </div>
 
-        <!-- Stats -->
-        <div class="stats-container">
-            <div class="stat-box">
-                <span class="stat-number">57</span>
-                <div class="stat-label">Foros de Consulta</div>
+        <div class="branches-grid">
+            <div class="branch-node" onclick="showDetail('fiscalizacion')">
+                <h3>Fiscalización (ASF)</h3>
+                <p>Observaciones y daños patrimoniales reportados en la Cuenta Pública.</p>
             </div>
-            <div class="stat-box">
-                <span class="stat-number">10k+</span>
-                <div class="stat-label">Propuestas Ciudadanas</div>
+            <div class="branch-node" onclick="showDetail('inegi')">
+                <h3>Percepción Ciudadana</h3>
+                <p>Datos de la ENCIG sobre corrupción y calidad regulatoria.</p>
             </div>
-            <div class="stat-box">
-                <span class="stat-number">2026</span>
-                <div class="stat-label">Inversión Social Histórica</div>
+            <div class="branch-node" onclick="showDetail('sobornos')">
+                <h3>Sobornos y Cohecho</h3>
+                <p>Evaluaciones de la OCDE sobre el marco anti-corrupción en México.</p>
             </div>
-            <div class="stat-box">
-                <span class="stat-number">60-64</span>
-                <div class="stat-label">Años Pensión Mujeres</div>
+            <div class="branch-node" onclick="showDetail('transparencia')">
+                <h3>Transparencia</h3>
+                <p>Clasificación de información y respuestas del INAI.</p>
             </div>
         </div>
 
-        <!-- Toggle Perspectives -->
-        <div class="toggle-container">
-            <button class="toggle-btn active" onclick="showSection('logros')">Logros Materiales</button>
-            <button class="toggle-btn" onclick="showSection('escucha')">¿Realmente Escucha?</button>
-        </div>
-
-        <!-- Section: Logros -->
-        <div id="logros" class="content-section active">
-            <h2 class="section-header">🚀 ACCIONES MATERIALES CONSOLIDADAS</h2>
-            
-            <div class="grid-3">
-                <div class="card holo-card" onclick="openModal('modal1')">
-                    <span class="card-icon">💰</span>
-                    <h3>Programas Sociales</h3>
-                    <p>Pensión Mujeres Bienestar (60-64 años), Beca Rita Cetina, Salud Casa por Casa</p>
-                    <button class="info-btn">Ver Detalles</button>
-                </div>
-
-                <div class="card holo-card" onclick="openModal('modal2')">
-                    <span class="card-icon">🚇</span>
-                    <h3>Movilidad</h3>
-                    <p>Cablebús, trolebuses elevados y red nacional de trenes de pasajeros</p>
-                    <button class="info-btn">Ver Detalles</button>
-                </div>
-
-                <div class="card holo-card" onclick="openModal('modal3')">
-                    <span class="card-icon">🛡️</span>
-                    <h3>Seguridad</h3>
-                    <p>Estrategia de causas sociales y coordinación diaria de gabinetes</p>
-                    <button class="info-btn">Ver Detalles</button>
-                </div>
-
-                <div class="card holo-card" onclick="openModal('modal4')">
-                    <span class="card-icon">🎓</span>
-                    <h3>Educación</h3>
-                    <p>Universidades Rosario Castellanos y Universidad de la Salud</p>
-                    <button class="info-btn">Ver Detalles</button>
-                </div>
-
-                <div class="card holo-card" onclick="openModal('modal5')">
-                    <span class="card-icon">🏗️</span>
-                    <h3>Infraestructura</h3>
-                    <p>Continuidad de la Cuarta Transformación con proyectos masivos</p>
-                    <button class="info-btn">Ver Detalles</button>
-                </div>
-
-                <div class="card holo-card" onclick="openModal('modal6')">
-                    <span class="card-icon">📊</span>
-                    <h3>Presupuesto 2026</h3>
-                    <p>Inversión social histórica proyectada para el próximo año</p>
-                    <button class="info-btn">Ver Detalles</button>
-                </div>
+        <!-- Panel de Detalles Interactivo -->
+        <div id="detail-fiscalizacion" class="detail-panel">
+            <h2>Fiscalización Superior de la Cuenta Pública</h2>
+            <p>La Auditoría Superior de la Federación (ASF) es el órgano técnico de la Cámara de Diputados encargado de fiscalizar el uso de los recursos públicos. En sus informes históricos, la ASF ha detectado sistemáticamente observaciones relacionadas con daños patrimoniales, faltas administrativas graves y inconsistencias en la ejecución del gasto, lo que plantea interrogantes sobre la eficacia de los controles internos en las dependencias gubernamentales.</p>
+            <p>La persistencia de estas observaciones año tras año sugiere un desafío estructural en la rendición de cuentas, independientemente de la administración en turno, incluyendo la actual bajo la presidencia de Claudia Sheinbaum.</p>
+            <div class="source-citation">
+                Fuente verificable: <a href="https://www.asf.gob.mx" target="_blank">Auditoría Superior de la Federación (asf.gob.mx)</a> - Informes de Resultados de la Fiscalización Superior de la Cuenta Pública.
             </div>
         </div>
 
-        <!-- Section: Escucha -->
-        <div id="escucha" class="content-section">
-            <h2 class="section-header">👂 ¿REALMENTE ESCUCHA?</h2>
-            
-            <div class="grid-2">
-                <div class="card" style="border-color: var(--neon-blue);">
-                    <h3 style="color: var(--neon-blue);">✅ Postura Oficial</h3>
-                    <p>Democracia participativa directa, 57 foros con 10 mil propuestas, conferencias diarias ("Las mañaneras del pueblo") y consultas previas a reformas.</p>
-                    <p style="margin-top: 15px; font-style: italic; color: var(--neon-blue);">"Mandando obedeciendo al interés de las mayorías"</p>
-                    <button class="info-btn" onclick="openModal('modal7')">Ver Argumentos</button>
-                </div>
-
-                <div class="card" style="border-color: var(--neon-pink);">
-                    <h3 style="color: var(--neon-pink);">⚠️ Postura Crítica</h3>
-                    <p>Diálogo condicionado solo a quienes se alinean con la 4T. Las opiniones de expertos independientes son calificadas como "viejo régimen" o "conservadurismo".</p>
-                    <p style="margin-top: 15px; font-style: italic; color: var(--neon-pink);">"Consultas para legitimar, no para decidir"</p>
-                    <button class="info-btn" onclick="openModal('modal8')">Ver Críticas</button>
-                </div>
-            </div>
-
-            <div class="analysis-box">
-                <h2>🎯 ANÁLISIS HONESTO</h2>
-                <p>
-                    <span class="highlight">SÍ ayuda y apoya materialmente:</span> Los programas sociales llegan a millones, la infraestructura se construye y hay una inversión histórica en bienestar. Si tus prioridades son apoyos económicos directos y obras públicas, <span class="highlight">sentirás que te escucha</span>.
-                </p>
-                <p>
-                    <span class="warning">PERO hay matices importantes:</span> Si perteneces a sectores que demandan diálogo técnico, balance de poderes o correcciones de rumbo basadas en evidencia científica independiente, <span class="warning">sentirás que el gobierno es rígido e impermeable</span> a la crítica institucional.
-                </p>
-                <p>
-                    <strong>Verdad incómoda:</strong> El gobierno escucha activamente, pero principalmente <em>a quienes ya están de acuerdo</em> con su proyecto político. La participación ciudadana existe, pero está filtrada ideológicamente.
-                </p>
+        <div id="detail-inegi" class="detail-panel">
+            <h2>Percepción de Corrupción y Calidad Gubernamental</h2>
+            <p>El Instituto Nacional de Estadística y Geografía (INEGI) realiza la Encuesta Nacional de Calidad e Impacto Gubernamental (ENCIG). Este instrumento mide la frecuencia con la que la población adulta tuvo contacto con servidores públicos y si experimentó solicitudes de dádivas o pagos irregulares.</p>
+            <p>Los datos de la ENCIG proporcionan una base empírica neutral sobre la percepción de corrupción a nivel estatal y federal, sirviendo como un termómetro objetivo sobre si las instituciones están atendiendo las necesidades de la gente o si, por el contrario, los ciudadanos enfrentan barreras corruptas en sus trámites.</p>
+            <div class="source-citation">
+                Fuente verificable: <a href="https://www.inegi.org.mx/programas/encig/" target="_blank">INEGI - ENCIG (inegi.org.mx)</a>.
             </div>
         </div>
 
-        <!-- Final Conclusion -->
-        <div class="analysis-box" style="margin-top: 50px; background: linear-gradient(135deg, rgba(255,0,110,0.1), rgba(188,19,254,0.1)); border-color: var(--neon-pink);">
-            <h2 style="color: var(--neon-blue); text-align: center; font-size: 2rem;">💭 CONCLUSIÓN FINAL</h2>
-            <p style="text-align: center; font-size: 1.2rem;">
-                La respuesta no es blanca o negra. <span class="highlight">Depende de quién seas y qué necesites.</span>
-            </p>
-            <p style="text-align: center; margin-top: 20px;">
-                Para las mayorías desprotegidas que reciben apoyos directos: <span style="color: #00ff88; font-weight: bold;">SÍ escucha y apoya</span><br>
-                Para la sociedad civil crítica y expertos independientes: <span style="color: var(--neon-pink); font-weight: bold;">Escucha selectivamente</span>
-            </p>
-            <p style="text-align: center; margin-top: 20px; font-style: italic; opacity: 0.8;">
-                "La realidad es compleja y polarizada. El gobierno cumple promesas materiales, pero mantiene una postura ideológica cerrada ante la disidencia."
-            </p>
+        <div id="detail-sobornos" class="detail-panel">
+            <h2>Convención de la OCDE contra el Cohecho</h2>
+            <p>México es parte de la Convención de la OCDE sobre la Lucha contra el Cohecho de Servidores Públicos Extranjeros en Transacciones Comerciales Internacionales. Las evaluaciones por pares de la OCDE han señalado consistentemente que, aunque México cuenta con un marco legal robusto, la implementación práctica, la coordinación entre autoridades y el número de condenas por soborno transnacional y nacional siguen siendo áreas de oportunidad críticas.</p>
+            <p>Estos informes internacionales ofrecen una perspectiva externa y técnica sobre la voluntad política real para perseguir la corrupción de alto nivel.</p>
+            <div class="source-citation">
+                Fuente verificable: <a href="https://www.oecd.org/corruption/oecdantibriberyconvention.htm" target="_blank">Organización para la Cooperación y el Desarrollo Económicos (OCDE)</a> - Evaluaciones de la Fase 4 de México.
+            </div>
         </div>
-    </div>
 
-    <!-- Modals -->
-    <div id="modal1" class="modal" onclick="closeModal(event, 'modal1')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal1')">&times;</span>
-            <h2>📋 Programas Sociales Detallados</h2>
-            <ul>
-                <li><strong>Pensión Mujeres Bienestar:</strong> Apoyo económico para mujeres de 60 a 64 años, cerrando la brecha antes de la pensión universal.</li>
-                <li><strong>Beca Rita Cetina:</strong> Becas para estudiantes de educación básica con enfoque de género.</li>
-                <li><strong>Salud Casa por Casa:</strong> Programa de atención médica domiciliaria para comunidades vulnerables.</li>
-                <li><strong>Presupuesto 2026:</strong> Se proyecta una inversión social histórica, la más alta en décadas.</li>
-            </ul>
-            <p style="margin-top: 20px; padding: 15px; background: rgba(0,243,255,0.1); border-radius: 10px; border-left: 4px solid var(--neon-blue);">
-                <strong>Impacto:</strong> Millones de familias reciben apoyos directos sin intermediarios.
-            </p>
+        <div id="detail-transparencia" class="detail-panel">
+            <h2>Transparencia y Acceso a la Información</h2>
+            <p>El Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI) es la autoridad garante del derecho a saber. Los informes del INAI muestran un volumen significativo de solicitudes de información que son clasificadas como "reservadas" o "confidenciales" por las dependencias gubernamentales, a menudo apelando a excepciones de seguridad nacional o interés público.</p>
+            <p>El aumento en las negativas de información o la falta de respuestas oportunas limita la capacidad de la sociedad civil y el periodismo de investigación para auditar el desempeño del gobierno y la presunta escucha a las demandas ciudadanas.</p>
+            <div class="source-citation">
+                Fuente verificable: <a href="https://www.inai.org.mx/" target="_blank">Instituto Nacional de Transparencia (inai.org.mx)</a> - Informes de Labores y Estadísticas de Solicitudes.
+            </div>
         </div>
-    </div>
+    </main>
 
-    <div id="modal2" class="modal" onclick="closeModal(event, 'modal2')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal2')">&times;</span>
-            <h2>🚇 Movilidad y Transporte</h2>
-            <ul>
-                <li><strong>Cablebús:</strong> Sistema de teleférico urbano implementado en la CDMX durante su gestión como jefa de gobierno.</li>
-                <li><strong>Trolebuses Elevados:</strong> Transporte eléctrico masivo de alta capacidad.</li>
-                <li><strong>Trenes de Pasajeros:</strong> Continuidad del Tren Maya, Tren Interoceánico y modernización de líneas existentes.</li>
-                <li><strong>Enfoque:</strong> Movilidad sostenible y accesible para todos los estratos sociales.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="modal3" class="modal" onclick="closeModal(event, 'modal3')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal3')">&times;</span>
-            <h2>🛡️ Seguridad Pública</h2>
-            <ul>
-                <li><strong>Estrategia:</strong> Atender las causas sociales de la violencia (pobreza, falta de oportunidades).</li>
-                <li><strong>Coordinación:</strong> Gabinetes de seguridad diarios para respuesta inmediata.</li>
-                <li><strong>Hito 2026:</strong> Abatimiento de Nemesio Oseguera "El Mencho", uno de los narcotraficantes más buscados.</li>
-                <li><strong>Enfoque:</strong> Combate al crimen organizado sin descuidar la prevención social.</li>
-            </ul>
-            <p style="margin-top: 20px; color: var(--neon-pink);">
-                <strong>Nota:</strong> El abatimiento del Mencho fue un golpe mediático e institucional significativo.
-            </p>
-        </div>
-    </div>
-
-    <div id="modal4" class="modal" onclick="closeModal(event, 'modal4')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal4')">&times;</span>
-            <h2>🎓 Educación Superior</h2>
-            <ul>
-                <li><strong>Universidad Rosario Castellanos:</strong> Nueva universidad pública para ampliar matrícula sin costo.</li>
-                <li><strong>Universidad de la Salud:</strong> Formación de profesionales del sector salud con enfoque comunitario.</li>
-                <li><strong>Objetivo:</strong> Democratizar el acceso a la educación superior de calidad.</li>
-                <li><strong>Cobertura:</strong> Enfoque en zonas marginadas y poblaciones vulnerables.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="modal5" class="modal" onclick="closeModal(event, 'modal5')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal5')">&times;</span>
-            <h2>🏗️ Infraestructura Masiva</h2>
-            <ul>
-                <li><strong>Continuidad 4T:</strong> Seguimiento de los proyectos emblemáticos de la Cuarta Transformación.</li>
-                <li><strong>Obras Estratégicas:</strong> Refinería Dos Bocas, Aeropuerto Felipe Ángeles, Tren Maya.</li>
-                <li><strong>Inversión Pública:</strong> El Estado como motor del desarrollo económico.</li>
-                <li><strong>Generación de Empleo:</strong> Miles de empleos directos e indirectos en construcción.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="modal6" class="modal" onclick="closeModal(event, 'modal6')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal6')">&times;</span>
-            <h2>📊 Presupuesto 2026</h2>
-            <ul>
-                <li><strong>Inversión Social Histórica:</strong> El presupuesto proyectado para 2026 representa un récord en gasto social.</li>
-                <li><strong>Prioridades:</strong> Pensiones, becas, salud y programas de bienestar.</li>
-                <li><strong>Enfoque:</strong> Redistribución de la riqueza hacia los sectores más vulnerables.</li>
-                <li><strong>Críticas:</strong> Algunos economistas advierten sobre la sostenibilidad fiscal a largo plazo.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="modal7" class="modal" onclick="closeModal(event, 'modal7')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal7')">&times;</span>
-            <h2>✅ Argumentos del Gobierno</h2>
-            <ul>
-                <li><strong>Democracia Directa:</strong> 57 foros de consulta para el Plan Nacional de Desarrollo 2025-2030.</li>
-                <li><strong>Participación Real:</strong> Más de 10,000 propuestas ciudadanas integradas.</li>
-                <li><strong>Transparencia:</strong> Conferencias informativas diarias ("Las mañaneras del pueblo").</li>
-                <li><strong>Consultas Previas:</strong> Foros de discusión antes de reformas constitucionales (electoral, judicial).</li>
-                <li><strong>Filosofía:</strong> "Mandando obedeciendo" al interés de las mayorías desprotegidas.</li>
-            </ul>
-            <p style="margin-top: 20px; color: var(--neon-blue);">
-                <strong>Conclusión oficial:</strong> El pueblo decide y el gobierno ejecuta.
-            </p>
-        </div>
-    </div>
-
-    <div id="modal8" class="modal" onclick="closeModal(event, 'modal8')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal(null, 'modal8')">&times;</span>
-            <h2>⚠️ Críticas y Cuestionamientos</h2>
-            <ul>
-                <li><strong>Diálogo Condicionado:</strong> Solo se escucha a organizaciones alineadas con la 4T.</li>
-                <li><strong>Descalificación:</strong> Expertos independientes (economía, salud, ecología, derecho) son etiquetados como "conservadores" o "viejo régimen".</li>
-                <li><strong>Consultas de Fachada:</strong> Las consultas ciudadanas legitiman decisiones ya tomadas, no permiten modificar rumbos.</li>
-                <li><strong>Inflexibilidad:</strong> Megaproyectos y reformas avanzan sin considerar objeciones técnicas fundamentadas.</li>
-                <li><strong>Polarización:</strong> Quien no está con el gobierno, está en su contra.</li>
-            </ul>
-            <p style="margin-top: 20px; color: var(--neon-pink);">
-                <strong>Conclusión crítica:</strong> Hay participación, pero dentro de márgenes ideológicos estrechos.
-            </p>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p>© 2026 Análisis Independiente | Proyecto Educativo</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">
-            Integrantes: Noemí, Alejandro, Omar, Tadeo, Frida y Sophie
-        </p>
+    <footer>
+        <p>Observatorio de Integridad Institucional © 2026. Datos basados en fuentes públicas, gubernamentales (.gob.mx) y organismos internacionales verificables.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Este sitio es un ejercicio de visualización de datos cívicos con fines informativos y de rendición de cuentas.</p>
     </footer>
 
     <script>
-        // Create floating particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.animationDelay = Math.random() * 10 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                container.appendChild(particle);
-            }
-        }
-
-        createParticles();
-
-        // Toggle sections
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
+        // Lógica del Contador
+        // Nota técnica: Los navegadores limitan setTimeout a un mínimo de ~4ms. 
+        // Se implementa un rango de 300 a 700 milisegundos (0.3 a 0.7 segundos) 
+        // para lograr el efecto visual de "contador en vivo" rápido y errático solicitado, 
+        // manteniendo la viabilidad técnica del renderizado del DOM.
+        const counterElement = document.getElementById('live-counter');
+        
+        function updateCounter() {
+            // Genera un número aleatorio entre 320 y 344 (inclusive)
+            const randomValue = Math.floor(Math.random() * (344 - 320 + 1)) + 320;
+            counterElement.innerText = randomValue;
             
-            // Remove active class from all buttons
-            document.querySelectorAll('.toggle-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            // Intervalo aleatorio entre 300ms y 700ms (0.3 a 0.7 segundos)
+            const delay = Math.random() * (700 - 300) + 300;
             
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
+            setTimeout(updateCounter, delay);
         }
 
-        // Modal functions
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+        // Iniciar el contador
+        updateCounter();
 
-        function closeModal(event, modalId) {
-            if (!event || event.target.classList.contains('modal') || event.target.classList.contains('close-modal')) {
-                document.getElementById(modalId).style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Toggle analysis button
-        function toggleAnalysis() {
-            const logrosSection = document.getElementById('logros');
-            logrosSection.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(10, 10, 15, 0.95)';
-                header.style.backdropFilter = 'blur(20px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, rgba(188, 19, 254, 0.2), rgba(0, 243, 255, 0.2))';
-            }
-        });
-
-        // Add typing effect to question
-        const questionText = document.querySelector('.question-text');
-        const originalText = questionText.textContent;
-        questionText.textContent = '';
-        let i = 0;
-
-        function typeWriter() {
-            if (i < originalText.length) {
-                questionText.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-
-        setTimeout(typeWriter, 1000);
-
-        // Interactive card hover sound effect (visual feedback)
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+        // Lógica del Mapa Mental Interactivo
+        function showDetail(topicId) {
+            // Ocultar todos los paneles
+            const panels = document.querySelectorAll('.detail-panel');
+            panels.forEach(panel => {
+                panel.classList.remove('visible');
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+
+            // Quitar clase activa de todos los nodos
+            const nodes = document.querySelectorAll('.branch-node');
+            nodes.forEach(node => {
+                node.classList.remove('active');
             });
-        });
+
+            // Mostrar el panel seleccionado
+            const selectedPanel = document.getElementById('detail-' + topicId);
+            if (selectedPanel) {
+                selectedPanel.classList.add('visible');
+                
+                // Desplazamiento suave hacia el panel
+                setTimeout(() => {
+                    selectedPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+
+            // Activar el nodo correspondiente (encontrándolo por el onclick attribute)
+            nodes.forEach(node => {
+                if (node.getAttribute('onclick').includes(topicId)) {
+                    node.classList.add('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>
-
