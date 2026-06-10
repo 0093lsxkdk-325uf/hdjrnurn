@@ -13,7 +13,7 @@
             --accent: #455a64;
             --accent-hover: #37474f;
             --border: #cfd8dc;
-            --highlight: #d32f2f; /* Neutral red for serious alerts */
+            --highlight: #c62828; /* Neutral serious red for alerts/actions */
         }
 
         * {
@@ -27,7 +27,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            padding: 20px;
+            padding: 0 20px 40px;
         }
 
         /* Counter Section */
@@ -36,10 +36,10 @@
             color: #ecf0f1;
             padding: 15px 20px;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 500;
-            border-radius: 4px;
-            margin-bottom: 30px;
+            border-radius: 0 0 4px 4px;
+            margin: 0 -20px 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -54,12 +54,24 @@
             margin-left: 8px;
         }
 
+        /* Team Banner */
+        .team-banner {
+            text-align: center;
+            padding: 15px 20px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
         /* Header */
         header {
             text-align: center;
             margin-bottom: 40px;
             padding: 20px;
-            border-bottom: 2px solid var(--border);
         }
 
         header h1 {
@@ -84,7 +96,7 @@
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
         /* Central Node */
@@ -120,9 +132,9 @@
             gap: 30px;
             width: 100%;
             position: relative;
+            margin-bottom: 40px;
         }
 
-        /* Connecting lines (visual only for desktop) */
         @media (min-width: 768px) {
             .branches-grid::before {
                 content: '';
@@ -188,6 +200,28 @@
             color: #cfd8dc;
         }
 
+        /* Denuncia Button */
+        .denuncia-btn {
+            background-color: var(--highlight);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(198, 40, 40, 0.2);
+            letter-spacing: 0.5px;
+            margin-top: 20px;
+        }
+
+        .denuncia-btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(198, 40, 40, 0.3);
+        }
+
         /* Detail Panel */
         .detail-panel {
             max-width: 900px;
@@ -240,21 +274,131 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        footer {
-            text-align: center;
-            margin-top: 60px;
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--bg-secondary);
+            padding: 35px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--highlight);
+        }
+
+        .modal-content h2 {
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--text-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .test-notice {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--highlight);
+            font-weight: 500;
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Contador solicitado en la parte superior -->
+    <!-- Contador en la parte superior -->
     <div class="counter-banner">
-        El gobierno dice que no hay personas afectadas. Contador en vivo (aproximado por minuto): <span id="live-counter" class="counter-value">320</span>
+        El gobierno dice que no hay personas afectadas. Contador en vivo: <span id="live-counter" class="counter-value">320</span>
+    </div>
+
+    <!-- Integrantes arriba del título -->
+    <div class="team-banner">
+        Integrantes: Noemí, Sophie, Tadeo, Alejandro, Omar y Quezada
     </div>
 
     <header>
@@ -287,10 +431,13 @@
             </div>
         </div>
 
+        <!-- Botón de Denuncia -->
+        <button class="denuncia-btn" onclick="openModal()">Denuncia</button>
+
         <!-- Panel de Detalles Interactivo -->
         <div id="detail-fiscalizacion" class="detail-panel">
             <h2>Fiscalización Superior de la Cuenta Pública</h2>
-            <p>La Auditoría Superior de la Federación (ASF) es el órgano técnico de la Cámara de Diputados encargado de fiscalizar el uso de los recursos públicos. En sus informes históricos, la ASF ha detectado sistemáticamente observaciones relacionadas con daños patrimoniales, faltas administrativas graves y inconsistencias en la ejecución del gasto, lo que plantea interrogantes sobre la eficacia de los controles internos en las dependencias gubernamentales.</p>
+            <p>La Auditoría Superior de la Federación (ASF) es el órgano técnico de la Cámara de Diputados encargado de fiscalizar el uso de los recursos públicos. En sus informes históricos, la ASF ha detectado sistemáticamente observaciones relacionadas con daños patrimoniales, faltas administrativas graves e inconsistencias en la ejecución del gasto, lo que plantea interrogantes sobre la eficacia de los controles internos en las dependencias gubernamentales.</p>
             <p>La persistencia de estas observaciones año tras año sugiere un desafío estructural en la rendición de cuentas, independientemente de la administración en turno, incluyendo la actual bajo la presidencia de Claudia Sheinbaum.</p>
             <div class="source-citation">
                 Fuente verificable: <a href="https://www.asf.gob.mx" target="_blank">Auditoría Superior de la Federación (asf.gob.mx)</a> - Informes de Resultados de la Fiscalización Superior de la Cuenta Pública.
@@ -325,65 +472,97 @@
         </div>
     </main>
 
-    <footer>
-        <p>Observatorio de Integridad Institucional © 2026. Datos basados en fuentes públicas, gubernamentales (.gob.mx) y organismos internacionales verificables.</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Este sitio es un ejercicio de visualización de datos cívicos con fines informativos y de rendición de cuentas.</p>
-    </footer>
+    <!-- Modal de Denuncia -->
+    <div id="denunciaModal" class="modal-overlay" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>Formulario de Denuncia</h2>
+            <form id="denunciaForm" onsubmit="handleTestSubmit(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+                </div>
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" name="asunto" required placeholder="Breve descripción del asunto">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Describe tu denuncia</label>
+                    <textarea id="descripcion" name="descripcion" required placeholder="Detalla los hechos de manera clara y concisa..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar</button>
+                <p id="testNotice" class="test-notice">Modo prueba: no se envió ningún dato.</p>
+            </form>
+        </div>
+    </div>
 
     <script>
         // Lógica del Contador
-        // Nota técnica: Los navegadores limitan setTimeout a un mínimo de ~4ms. 
-        // Se implementa un rango de 300 a 700 milisegundos (0.3 a 0.7 segundos) 
-        // para lograr el efecto visual de "contador en vivo" rápido y errático solicitado, 
-        // manteniendo la viabilidad técnica del renderizado del DOM.
         const counterElement = document.getElementById('live-counter');
         
         function updateCounter() {
-            // Genera un número aleatorio entre 320 y 344 (inclusive)
             const randomValue = Math.floor(Math.random() * (344 - 320 + 1)) + 320;
             counterElement.innerText = randomValue;
-            
-            // Intervalo aleatorio entre 300ms y 700ms (0.3 a 0.7 segundos)
             const delay = Math.random() * (700 - 300) + 300;
-            
             setTimeout(updateCounter, delay);
         }
-
-        // Iniciar el contador
         updateCounter();
 
         // Lógica del Mapa Mental Interactivo
         function showDetail(topicId) {
-            // Ocultar todos los paneles
             const panels = document.querySelectorAll('.detail-panel');
-            panels.forEach(panel => {
-                panel.classList.remove('visible');
-            });
+            panels.forEach(panel => panel.classList.remove('visible'));
 
-            // Quitar clase activa de todos los nodos
             const nodes = document.querySelectorAll('.branch-node');
-            nodes.forEach(node => {
-                node.classList.remove('active');
-            });
+            nodes.forEach(node => node.classList.remove('active'));
 
-            // Mostrar el panel seleccionado
             const selectedPanel = document.getElementById('detail-' + topicId);
             if (selectedPanel) {
                 selectedPanel.classList.add('visible');
-                
-                // Desplazamiento suave hacia el panel
                 setTimeout(() => {
                     selectedPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
             }
 
-            // Activar el nodo correspondiente (encontrándolo por el onclick attribute)
             nodes.forEach(node => {
                 if (node.getAttribute('onclick').includes(topicId)) {
                     node.classList.add('active');
                 }
             });
         }
+
+        // Lógica del Modal de Denuncia
+        function openModal() {
+            document.getElementById('denunciaModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll de fondo
+        }
+
+        function closeModal() {
+            document.getElementById('denunciaModal').classList.remove('active');
+            document.body.style.overflow = ''; // Restaurar scroll
+            document.getElementById('denunciaForm').reset();
+            document.getElementById('testNotice').style.display = 'none';
+        }
+
+        function closeModalOutside(event) {
+            if (event.target === document.getElementById('denunciaModal')) {
+                closeModal();
+            }
+        }
+
+        function handleTestSubmit(event) {
+            event.preventDefault(); // Evita que el formulario se envíe realmente
+            
+            // Mostrar mensaje de prueba
+            const notice = document.getElementById('testNotice');
+            notice.style.display = 'block';
+            
+            // Opcional: cerrar el modal después de 1.5 segundos para simular el flujo
+            setTimeout(() => {
+                closeModal();
+            }, 1500);
+        }
     </script>
 </body>
 </html>
+
